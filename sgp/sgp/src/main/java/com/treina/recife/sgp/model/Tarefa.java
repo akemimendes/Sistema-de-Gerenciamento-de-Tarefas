@@ -25,6 +25,8 @@ import lombok.NoArgsConstructor;
 @Entity(name="Tarefa")
 public class Tarefa {
 
+    private static final long serialVersionID= 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TASKID")
@@ -47,10 +49,10 @@ public class Tarefa {
 
     @ManyToOne
     @JoinColumn(name = "PROJECTID",referencedColumnName = "PROJECTID", nullable =false)
-    private Projeto projectId;
+    private Projeto projeto;
 
     @ManyToOne
     @JoinColumn(name = "USERID",referencedColumnName = "USERID", nullable =false)
-    private Usuario userID;
+    private Usuario usuario;
     
 }

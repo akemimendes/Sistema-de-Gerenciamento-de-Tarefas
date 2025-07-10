@@ -25,10 +25,12 @@ import lombok.NoArgsConstructor;
 @Entity(name="Usuarios")
 public class Usuario {
 
+    private static final long serialVersionID= 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USERID")
-    private long userID;
+    private long userId;
 
     @Column(name="NOME", nullable =false)
     private String nome;
@@ -36,7 +38,7 @@ public class Usuario {
     @Column(name="CPF", nullable =false, unique = true)
     private String cpf;
 
-    @Column(name="EMAIL", nullable =false, unique = true)
+    @Column(name="email", nullable =false, unique = true)
     private String email;
 
     @Column(name="SENHA", nullable =false)

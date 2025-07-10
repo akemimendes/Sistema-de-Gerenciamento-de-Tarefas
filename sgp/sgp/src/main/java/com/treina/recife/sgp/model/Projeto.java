@@ -18,6 +18,8 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity(name="Projeto")
 public class Projeto {
+
+    private static final long serialVersionID= 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
