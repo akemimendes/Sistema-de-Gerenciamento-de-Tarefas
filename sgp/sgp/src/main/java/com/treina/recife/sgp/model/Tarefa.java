@@ -25,6 +25,7 @@ import lombok.NoArgsConstructor;
 @Entity(name="Tarefa")
 public class Tarefa {
 
+    @SuppressWarnings("unused")
     private static final long serialVersionID= 1L;
 
     @Id
@@ -35,11 +36,11 @@ public class Tarefa {
     @Column(name="TITULO", nullable =false)
     private String titulo;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
     @Column(name="DATACRIACAO", nullable =false)
     private LocalDate dataCriacao;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
     @Column(name="DATACONCLUSAO", nullable =false)
     private LocalDate dataConclusao;
 

@@ -19,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity(name="Projeto")
 public class Projeto {
 
+    @SuppressWarnings("unused")
     private static final long serialVersionID= 1L;
     
     @Id
@@ -33,11 +34,11 @@ public class Projeto {
     private String descricao;
 
     @Column(name = "DATAINICIO",nullable = false)
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
     private String dataInicio;
 
     @Column(name = "DATACONCLUSAO",nullable = false)
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "dd/MM/yyyy")
     private String dataConclusao;
 
     @ManyToOne
