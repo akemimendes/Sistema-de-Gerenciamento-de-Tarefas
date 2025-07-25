@@ -9,7 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,14 +37,14 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Usuario>> getUsuarios(
+    public ResponseEntity<Object> getUsuarios(
             @PageableDefault(sort = "userId", direction = Sort.Direction.ASC) Pageable pageable) {
 
         Page<Usuario> usuarios = usuarioService.getUsuarios(pageable);
 
         if (usuarios.isEmpty()) {
             logger.info("Ainda não há usuários cadastrados");
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(Page.empty());
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Ainda não há usuários cadastrados");
         } else {
             return ResponseEntity.status(HttpStatus.OK).body(usuarios);
         }
@@ -93,7 +91,6 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(Page.empty());
         } else {
             Usuario newUsuario = usuarios.get();
-            // newUsuario.setUserId(userId);
             newUsuario.setNome(usuarioDTO.getNome());
             newUsuario.setCpf(usuarioDTO.getCpf());
             newUsuario.setEmail(usuarioDTO.getEmail());

@@ -15,10 +15,10 @@ public interface UserService {
 
     Usuario createUsuario(Usuario usuario);
 
-     Usuario updateUsuario(Usuario usuario);
+    Usuario updateUsuario(Usuario usuario);
 
-     void deleteUsuario(long userId);
+    void deleteUsuario(long userId);
 
-     boolean isEmailAlreadyToken(String email);
+    boolean isEmailAlreadyToken(String email);
 
 }
